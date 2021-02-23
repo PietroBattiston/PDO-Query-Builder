@@ -1,0 +1,19 @@
+{
+    "name": "pietrobattiston/querybuilder",
+    "authors": [
+        {
+            "name": "Pietro Battiston"
+        }
+    ],
+    "require": {},
+   
+	"require-dev": {
+	        "phpunit/phpunit": "^9.5"
+	},
+
+	 "autoload": {
+        "psr-4" : {
+            "QueryBuilder\\": "src/"
+        }
+    }
+}
