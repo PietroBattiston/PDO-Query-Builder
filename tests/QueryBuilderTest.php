@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
-
 use QueryBuilder\QueryBuilder;
 
 
@@ -11,14 +10,12 @@ final class QueryBuilderTest extends TestCase
     public function setUp():void {
         $this->QB = new QueryBuilder;
         $this->tableName = 'myTable';
+        $this->QB->table = $this->tableName;
     }
 
     public function test_a_table_can_be_selected(): void
     {
-        
-         $this->QB->table($this->tableName);
-
-         $this->assertEquals($this->QB->table, $this->tableName);
+        $this->assertEquals($this->QB->table, $this->tableName);
     }
 
     public function test_CREATE_query_can_be_built(): void
@@ -83,11 +80,13 @@ final class QueryBuilderTest extends TestCase
          $newTitle  = 'myTitle';
          $this->QB->update([
             'title' => $newTitle,
-            'id' => 32
+            'id' => 32,
+            'name' => 'myname',
+            'age' => 29
          ]);
          $bindedTitle = ':title';
          $bindedId = ':id';
-         $expectedQuery = 'UPDATE ' . $this->tableName . ' SET title=:title,id=:id';
+         $expectedQuery = 'UPDATE ' . $this->tableName . ' SET title=:title,id=:id,name=:name,age=:age';
          $this->assertEquals($this->QB->query, $expectedQuery);
          $this->assertArrayHasKey($bindedTitle, $this->QB->bindedValues);
          $this->assertArrayHasKey($bindedId, $this->QB->bindedValues);

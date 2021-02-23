@@ -9,12 +9,6 @@
 		public $query = '';
 		public $statement = '';
 		public $bindedValues = [];
-		public $dbMethod = '';
-		public $affectedRows;
-
-		public function __construct() 
-		{
-		}
 
 		/*
 		|--------------------------------------------------------------------------
@@ -184,25 +178,12 @@
 			return $this;
 		}
 
-		public function get():array 
-		{
-			$this->setDbMethod('get');
-			return $this->ReturnQuery();
-		}
-
-		public function first():array
-		{
-			$this->setDbMethod('first');
-			return $this->ReturnQuery();
-		}
-
-
 		/*
 	    |--------------------------------------------------------------------------
 	    | Return the final query
 	    |--------------------------------------------------------------------------
 	    */
-		public function ReturnQuery() 
+		public function ReturnQuery():string
 		{
 			return $this->query;
 		}
@@ -242,13 +223,6 @@
 			}
 		}
 
-		private function bindValues() 
-		{
-			foreach ($this->bindedValues as $key => $value) {
-				$this->db->bind($key, $value);
-			}
-		}
-
 		/*
 		|--------------------------------------------------------------------------
 		| Separate array's elements by a comma
@@ -270,22 +244,6 @@
 				$valuesSeparatedByCommma .= $value . $separator;
 			}
 			return $valuesSeparatedByCommma;
-		}
-
-		/*
-		|--------------------------------------------------------------------------
-		| Set $this->dbMethod to the given value. It will be passed to Database Class
-		|--------------------------------------------------------------------------
-		|
-		| The Database Class can know which method must call.
-		| Examples:
-		| 'get' will call the get() method of Database Class.
-		| 'first' will call the first() method of Database Class.
-		| 'execute' will call the execute() method of Database Class.
-		*/
-		private function setDbMethod(string $method):void
-		{
-			$this->dbMethod = $method;
 		}
 
 		/*
