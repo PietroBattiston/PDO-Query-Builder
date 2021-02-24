@@ -13,7 +13,7 @@ $values = [
 ];
 $query = $qb
         ->table('YourTable')
-		->create($values);
+	->create($values);
 
 var_dump($query);
 //INSERT INTO posts (name,surname) VALUES (:name,:surname)
@@ -26,17 +26,17 @@ $qb = new QueryBuilder;
 
 
 $query = $qb
-		->table('YourTable')
-		->select(['name, surname'])
-		->returnQuery();
+	->table('YourTable')
+	->select(['name, surname'])
+	->returnQuery();
 
 var_dump($query);
 //SELECT name, surname FROM YourTable
 
 $query = $qb
-		->table('YourTable')
-		->select(['*'])
-		->returnQuery();
+	->table('YourTable')
+	->select(['*'])
+	->returnQuery();
 
 var_dump($query);
 //SELECT * FROM YourTable
@@ -49,10 +49,10 @@ $qb = new QueryBuilder;
 
 
 $query = $qb
-		->table('YourTable')
-		->select(['*'])
-		->where('name','=','John')
-		->returnQuery();
+	->table('YourTable')
+	->select(['*'])
+	->where('name','=','John')
+	->returnQuery();
 
 var_dump($query);
 //SELECT * FROM YourTable WHERE name=:name
@@ -64,10 +64,10 @@ var_dump($query);
 $qb = new QueryBuilder;
 
 $query = $qb
-		->table('YourTable')
-		->select(['*'])
-		->limit(2)
-		->returnQuery();
+	->table('YourTable')
+	->select(['*'])
+	->limit(2)
+	->returnQuery();
 
 var_dump($query);
 //SELECT * FROM YourTable LIMIT 2
@@ -82,9 +82,9 @@ $id = 32;
 $newName = 'Paul';
 
 $query = $qb
-		->table('YourTable')
-		->where('id','=', $id)
-		->update(['title' => $newName]);
+	->table('YourTable')
+	->where('id','=', $id)
+	->update(['title' => $newName]);
 
 var_dump($query);
 //UPDATE YourTable SET title=:title WHERE id=:id
@@ -97,9 +97,9 @@ $qb = new QueryBuilder;
 
 $id = 32;
 $query = $qb
-		->table('posts')
-		->where('id','=', $id)
-		->delete();
+	->table('posts')
+	->where('id','=', $id)
+	->delete();
 
 var_dump($query);
 //DELETE FROM posts WHERE id=:id
@@ -120,9 +120,9 @@ $qb = new QueryBuilder;
 $id = 32;
 
 $query = $qb
-			->table('YourTable')
-			->where('id','=', $id)
-			->delete();
+	->table('YourTable')
+	->where('id','=', $id)
+	->delete();
 
 $database->prepare($query);
 
