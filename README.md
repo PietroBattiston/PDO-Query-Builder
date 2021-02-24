@@ -56,6 +56,14 @@ $query = $qb
 var_dump($query);
 //SELECT * FROM YourTable WHERE name=:name
 
+$query = $qb
+	->table('YourTable')
+	->select(['*'])
+	->where('name','=','John')
+	->returnQuery();
+var_dump($query);
+//SELECT * FROM YourTable WHERE name=:name AND surname=:surname
+
 ```
 ### LIMIT
 ```php
