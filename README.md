@@ -16,7 +16,7 @@ $query = $qb
 	->create($values);
 
 var_dump($query);
-//INSERT INTO posts (name,surname) VALUES (:name,:surname)
+//INSERT INTO YourTable (name,surname) VALUES (:name,:surname)
 
 ```
 ### SELECT
