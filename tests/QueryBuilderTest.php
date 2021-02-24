@@ -15,6 +15,7 @@ final class QueryBuilderTest extends TestCase
 
     public function test_a_table_can_be_selected(): void
     {
+        $this->qb->table($this->tableName);
         $this->assertEquals($this->QB->table, $this->tableName);
     }
 

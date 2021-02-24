@@ -7,7 +7,6 @@
 	{
 		public $table = '';
 		public $query = '';
-		public $statement = '';
 		public $bindedValues = [];
 
 		/*
@@ -19,7 +18,7 @@
 		{
 			
 			$this->table = $tableName;
-			//emptying values in case have been already used
+			//emptying values
 			$this->query = '';
 			$this->bindedValues = [];
 
@@ -57,7 +56,7 @@
 	    | or
 	    | INSERT INTO tableName (col1,col2) VALUES (:col1,:col2)
 	    */
-		public function create(array $values):self
+		public function create(array $values):string
 		{
 			/// NEED REFACTOR: LOOK UPDATE METHOD
 			$query = "INSERT INTO @tableName (@colName) VALUES (@bindedCol)";
@@ -77,8 +76,8 @@
 				"@bindedCol" => $bindedColumnsSeparatedByCommma
 			];
 			$this->query = $this->replacePlaceholders($query, $placeholdersValues);
-			$this->ReturnQuery();
-			return $this;
+			return $this->ReturnQuery();
+		
 		}
 		
 		/*
@@ -207,7 +206,7 @@
 	    | The array will be used to bind the values before the query execution
 	    |--------------------------------------------------------------------------
 	    |
-	    | It sets an array ($this->bindedValues) containing columns name as Key with 	 | the related value.
+	    | It sets an array ($this->bindedValues) containing columns name as Key with the related value.
 	    |
 	    | 
 	    */
