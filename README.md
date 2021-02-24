@@ -96,12 +96,12 @@ $qb = new QueryBuilder;
 
 $id = 32;
 $query = $qb
-	->table('posts')
+	->table('YourTable')
 	->where('id','=', $id)
 	->delete();
 
 var_dump($query);
-//DELETE FROM posts WHERE id=:id
+//DELETE FROM YourTable WHERE id=:id
 
 ```
 
