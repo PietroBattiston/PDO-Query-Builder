@@ -24,7 +24,6 @@ var_dump($query);
 
 $qb = new QueryBuilder;
 
-
 $query = $qb
 	->table('YourTable')
 	->select(['name, surname'])
@@ -118,7 +117,6 @@ $database = new Database;
 $qb = new QueryBuilder;
 
 $id = 32;
-
 $query = $qb
 	->table('YourTable')
 	->where('id','=', $id)
@@ -175,11 +173,9 @@ class Database
 				case is_null($value):
 					$type = PDO::PARAM_NULL;
 					break;
-				
 				default:
 					$type = PDO::PARAM_STR;
-			}
-
+		}
 		$this->statement->bindValue($param, $value, $type);
  	}
 
