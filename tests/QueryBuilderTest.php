@@ -15,7 +15,7 @@ final class QueryBuilderTest extends TestCase
 
     public function test_a_table_can_be_selected(): void
     {
-        $this->qb->table($this->tableName);
+        $this->QB->table($this->tableName);
         $this->assertEquals($this->QB->table, $this->tableName);
     }
 
@@ -143,6 +143,13 @@ final class QueryBuilderTest extends TestCase
     {
          $this->QB->limit(2);
          $expectedQuery = ' LIMIT 2';
+         $this->assertEquals($this->QB->query, $expectedQuery);
+    }
+
+    public function test_GROUP_BY_clause_can_be_built(): void
+    {
+         $this->QB->groupBy('title');
+         $expectedQuery = ' GROUP BY title';
          $this->assertEquals($this->QB->query, $expectedQuery);
     }
 

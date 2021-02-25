@@ -177,6 +177,17 @@
 			return $this;
 		}
 
+		public function groupBy($colName):self
+		{
+			$query = " GROUP BY @value";
+			$placeholdersValues = [
+				'@value' => $colName
+			];
+			$query = $this->replacePlaceholders($query, $placeholdersValues);
+			$this->query.= $query;
+			return $this;
+		}
+
 		/*
 	    |--------------------------------------------------------------------------
 	    | Return the final query
